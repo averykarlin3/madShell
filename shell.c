@@ -35,7 +35,7 @@ int execute(char** command) {
 	int status;
 	if(!chP) {
 		int c = execvp(command[0], command);
-		return c;
+		exit(c);
 	}
 	else {
 		waitpid(chP, &status);

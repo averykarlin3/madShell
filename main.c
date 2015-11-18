@@ -6,7 +6,7 @@ int main() {
 	while(!done) {
 		command = inputLine();
 		int i = 0;
-		while(command[i] != 0 && !done) {
+		while(command[i] && !done) {
 			if(!strcmp(command[i][0], "exit")) {
 				done++;
 			}
@@ -20,6 +20,6 @@ int main() {
 			}
 			i++;
 		}
-	return 0;
 	}
+	return 0;
 }
