@@ -3,4 +3,5 @@
 #include <unistd.h>
 #include <string.h>
 
-char** input();
+char*** inputLine();
+char** inputCommand();

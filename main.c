@@ -2,10 +2,10 @@
 
 int main() {
 	int done = 0;
-	char** command;
+	char*** command;
 	while(!done) {
-		command = input();
-		if(!strcmp(command[0],"exit")) {
+		command = inputLine();
+		if(!strcmp(command[0][0],"exit")) {
 			done++;
 		}
 		else {

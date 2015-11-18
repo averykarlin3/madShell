@@ -1,20 +1,31 @@
 #include "shell.h"
 
-char** input() {
-	char s[256];
-	char* sar[256];
-	printf("$");
+char*** inputLine() {
+	char* s = (char *)malloc(sizeof(char) * 256);
+	char*** scol = (char ***)malloc(sizeof(char **) * 256);	
+	printf("$ ");
 	fgets(s, sizeof(s), stdin);
 	char* news;
 	char* sp = s;
 	sp = strsep(&sp, "\n");
 	int c = 0;
 	while(sp) {
-		news = strsep(&sp, " ");
+		news = strsep(&sp, ";");
+		scol[c] = inputCommand(news);
+		c++;
+	}
+	return scol;
+}
+
+char** inputCommand(char* input) {
+	char* s = (char *)malloc(sizeof(char) * 256);
+	char** sar = (char **)malloc(sizeof(char *) * 256);
+	char* news;
+	int c = 0;
+	while(input) {
+		news = strsep(&input, " ");
 		sar[c] = news;
 		c++;
 	}
 	return sar;
 }
-
-
