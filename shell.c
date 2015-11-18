@@ -29,3 +29,16 @@ char** inputCommand(char* input) {
 	}
 	return sar;
 }
+
+int execute(char** command) {
+	int chP = fork();
+	int status;
+	if(!chP) {
+		int c = execvp(command[0], command);
+		return c;
+	}
+	else {
+		waitpid(chP, &status);
+	}
+	return status;
+}

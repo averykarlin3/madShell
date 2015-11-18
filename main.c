@@ -7,14 +7,16 @@ int main() {
 		command = inputLine();
 		int i = 0;
 		while(command[i] != 0 && !done) {
-			if(!strcmp(command[i][0],"exit")) {
+			if(!strcmp(command[i][0], "exit")) {
 				done++;
 			}
 			else if(!strcmp(command[i][0], "cd")) {
 			//cd
 			}
 			else {
-			//Other Stuff
+				int fail = execute(command[i]);
+				if(fail)
+					printf("%s", strerror(errno));
 			}
 			i++;
 		}
