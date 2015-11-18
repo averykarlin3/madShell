@@ -5,12 +5,19 @@ int main() {
 	char*** command;
 	while(!done) {
 		command = inputLine();
-		if(!strcmp(command[0][0],"exit")) {
-			done++;
+		int i = 0;
+		while(command[i] != 0 && !done) {
+			if(!strcmp(command[i][0],"exit")) {
+				done++;
+			}
+			else if(!strcmp(command[i][0], "cd")) {
+			//cd
+			}
+			else {
+			//Other Stuff
+			}
+			i++;
 		}
-		else {
-		//Other Stuff
-		}
-	}
 	return 0;
+	}
 }
