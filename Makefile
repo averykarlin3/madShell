@@ -6,3 +6,5 @@ shell.o: shell.c
 	gcc -c shell.c
 run: madshell
 	./madshell
+clean:
+	rm main.o shell.o madshell
