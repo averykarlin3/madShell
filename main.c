@@ -14,7 +14,7 @@ int main() {
 			//cd
 			}
 			else {
-				printf("%s", command[i][1]);
+				printf("%s", command[i][1]); //Cuts off after 4 characters for some reason - Bug
 				printf("%s", command[i][2]);
 				int fail = execute(command[i]);
 				if(fail)
