@@ -31,14 +31,14 @@ char** inputCommand(char* input) {
 }
 
 int execute(char** command) {
-	int chP = fork();
-	int status;
-	if(!chP) {
+	pid_t chP = fork();
+	int status = 0;
+	if(chP == 0) {
 		int c = execvp(command[0], command);
 		exit(c);
 	}
 	else {
-		waitpid(chP, &status);
+		wait(&status);
 	}
-	return status;
+	return WEXITSTATUS(status);
 }
