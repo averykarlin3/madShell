@@ -14,6 +14,7 @@ char*** inputLine() {
 		scol[c] = inputCommand(news);
 		c++;
 	}
+	scol[c] = 0;
 	return scol;
 }
 
@@ -27,6 +28,7 @@ char** inputCommand(char* input) {
 		sar[c] = news;
 		c++;
 	}
+	sar[c] = 0;
 	return sar;
 }
 
