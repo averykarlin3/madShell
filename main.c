@@ -14,9 +14,11 @@ int main() {
 			//cd
 			}
 			else {
+				printf("%s", command[i][1]);
+				printf("%s", command[i][2]);
 				int fail = execute(command[i]);
 				if(fail)
-					printf("%s", strerror(errno));
+					printf("%s\n", strerror(fail));
 			}
 			i++;
 		}

@@ -7,6 +7,7 @@ char*** inputLine() {
 	fgets(s, sizeof(s), stdin);
 	char* news;
 	char* sp = s;
+	printf("%s", sp);
 	sp = strsep(&sp, "\n");
 	int c = 0;
 	while(sp) {
@@ -19,7 +20,6 @@ char*** inputLine() {
 }
 
 char** inputCommand(char* input) {
-	char* s = (char *)malloc(sizeof(char) * 256);
 	char** sar = (char **)malloc(sizeof(char *) * 256);
 	char* news;
 	int c = 0;
@@ -37,7 +37,7 @@ int execute(char** command) {
 	int status = 0;
 	if(chP == 0) {
 		int c = execvp(command[0], command);
-		exit(c);
+		exit(errno);
 	}
 	else {
 		wait(&status);
