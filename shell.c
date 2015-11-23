@@ -51,11 +51,11 @@ char** inputCommand(char* input) {
 	return sar;
 }
 
-int execute(char* path, char** command) {
+int execute(char** command) {
 	pid_t chP = fork();
 	int status = 0;
 	if(chP == 0) {
-		int c = execv(strcat(path, command[0]), command);
+		int c = execvp(command[0], command);
 		exit(errno);
 	}
 	else {
@@ -64,6 +64,3 @@ int execute(char* path, char** command) {
 	return WEXITSTATUS(status);
 }
 
-char* chdir(char* path, char* command) {
-
-}

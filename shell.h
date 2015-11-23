@@ -8,6 +8,5 @@
 
 char*** inputLine();
 char** inputCommand(char* input);
-int execute(char* path, char** command);
+int execute(char** command);
 char* prompt();
-char* chdir(char* path, char* command);
