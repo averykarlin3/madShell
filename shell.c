@@ -1,6 +1,25 @@
 #include "shell.h"
 
-char*** inputLine() {
+char* prompt() {
+	/** Returns a suitable prompt for use in the shell.
+	 */
+	char* home = getenv("HOME");
+	char* cwd = get_current_dir_name(void);
+	char* prompt = (char *)malloc(256);
+	if(strstr(cwd, home)) {
+		
+	}
+}
+
+char*** inputLine(char* prompt) {
+	/** Responsible for user interaction.
+	 * 
+	 * 	Returns:
+	 * 		Input to be executed, divided up into commands and their options.
+	 * 	
+	 * 	Arguments:
+	 * 		char* prompt: a suitable user prompt.
+	 */
 	char* s = (char *)malloc(sizeof(char) * 256);
 	char*** scol = (char ***)malloc(sizeof(char **) * 256);	
 	printf("$ ");
