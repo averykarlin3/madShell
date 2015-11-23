@@ -51,7 +51,7 @@ char** inputCommand(char* input) {
 	return sar;
 }
 
-int execute(char** command, char* working_dir) {
+int execute(char* path, char** command) {
 	pid_t chP = fork();
 	int status = 0;
 	if(chP == 0) {
@@ -62,4 +62,8 @@ int execute(char** command, char* working_dir) {
 		wait(&status);
 	}
 	return WEXITSTATUS(status);
+}
+
+char* chdir(char* path, char* command) {
+
 }
