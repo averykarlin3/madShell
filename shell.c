@@ -1,15 +1,15 @@
 #include "shell.h"
 
-char* prompt() {
-	/** Returns a suitable prompt for use in the shell.
-	 */
+/*char* prompt() {
+	* Returns a suitable prompt for use in the shell.
+	 
 	char* home = getenv("HOME");
 	char* cwd = get_current_dir_name(void);
 	char* prompt = (char *)malloc(256);
 	if(strstr(cwd, home)) {
 		
 	}
-}
+}*/
 
 char*** inputLine(char* prompt) {
 	/** Responsible for user interaction.
