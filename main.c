@@ -11,7 +11,7 @@ int main() {
 				done++;
 			}
 			else if(!strcmp(command[i][0], "cd")) {
-			//cd
+				chdir(command[i][1]);
 			}
 			else {
 				printf("%s", command[i][1]); //Cuts off after 4 characters for some reason - Bug
