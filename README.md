@@ -3,6 +3,6 @@
 
 #### Function Headers:
 * char\*\* inputCommand(char\* input);
-* char\*\*\* inputLine();
+* char\*\*\* inputLine(char\* prompt);
 * int execute(char\*\* command);
 * char\* prompt();

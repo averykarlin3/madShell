@@ -6,7 +6,7 @@
 #include <string.h>
 #include <errno.h>
 
-char*** inputLine();
+char*** inputLine(char* prompt);
 char** inputCommand(char* input);
 int execute(char** command);
 char* prompt();
