@@ -9,3 +9,4 @@
 char*** inputLine();
 char** inputCommand(char* input);
 int execute(char** command);
+char* prompt();
