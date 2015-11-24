@@ -5,3 +5,4 @@
 * char\*\* inputCommand(char\* input);
 * char\*\*\* inputLine();
 * int execute(char\*\* command);
+* char\* prompt();
