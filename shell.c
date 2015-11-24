@@ -2,17 +2,21 @@
 
 void prompt() {
 	/* Prints a suitable prompt for use in the shell.
-	*/
+	 * 	*/
 	char* home = getenv("HOME");
-	char* cwd = get_current_dir_name(void);
-	printf(":");
+	char* cwd = getenv("PWD");
+	char* hostname = (char *)malloc(256);
+	gethostname(hostname, 256);
+	char* username = getenv("USER");
+	printf("%s@%s:", username, hostname);
 	if(strstr(cwd, home)) {
-		printf("~%s", cwd + strlen(home));
+		printf("~%s", cwd+strlen(home));
 	}
 	else {
-		strcat(prompt, cwd);
+		printf("%s", cwd);
 	}
-	strcat(prompt, "$ ");
+	printf("$ ");
+	fflush(stdout);
 }
 
 char*** inputLine(char* prompt) {
