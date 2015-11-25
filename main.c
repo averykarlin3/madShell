@@ -14,11 +14,11 @@ int main() {
 				chdir(command[i][1]);
 			}
 			else {
-				printf("%s", command[i][1]); //Cuts off after 4 characters for some reason - Bug
-				printf("%s", command[i][2]);
+				//printf("%s\n", command[i][1]); //Cuts off after 4 characters for some reason - Bug
+				//printf("%s", command[i][2]);
 				int fail = execute(command[i]);
-				if(fail)
-					printf("%s\n", strerror(fail));
+				//if(fail)
+				//	printf("%s\n", strerror(fail));
 			}
 			i++;
 		}
