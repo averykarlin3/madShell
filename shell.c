@@ -8,6 +8,7 @@ void prompt() {
 	char* hostname = (char *)malloc(256);
 	gethostname(hostname, 256);
 	char* username = getenv("USER");
+	printf("\e[31;1m\e[40;1m(MAD)\e[0m");
 	printf("%s@%s:", username, hostname);
 	if(strstr(cwd, home)) {
 		printf("~%s", cwd+strlen(home));
@@ -30,8 +31,7 @@ char*** inputLine() {
 	 */
 	char* s = (char *)malloc(sizeof(char) * 256);
 	char*** scol = (char ***)malloc(sizeof(char **) * 256);	
-	printf("$ ");
-        //prompt();
+	prompt();
 	fgets(s, sizeof(s), stdin);
 	char* news;
 	char* sp = s;
