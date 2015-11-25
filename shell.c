@@ -31,7 +31,7 @@ char*** inputLine() {
 	char* s = (char *)malloc(sizeof(char) * 256);
 	char*** scol = (char ***)malloc(sizeof(char **) * 256);	
 	printf("$ ");
-    //prompt();
+        //prompt();
 	fgets(s, sizeof(s), stdin);
 	char* news;
 	char* sp = s;
