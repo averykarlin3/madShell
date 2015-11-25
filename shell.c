@@ -19,7 +19,7 @@ void prompt() {
 	fflush(stdout);
 }
 
-char*** inputLine(char* prompt) {
+char*** inputLine() {
 	/** Responsible for user interaction.
 	 * 
 	 * 	Returns:
