@@ -4,7 +4,8 @@ void prompt() {
 	/* Prints a suitable prompt for use in the shell.
 	 * 	*/
 	char *home = getenv("HOME");
-	char *cwd = getenv("PWD");
+	char *cwd = (char *)malloc(256);
+	getcwd(cwd,256);
 	char *hostname = (char *)malloc(256);
 	gethostname(hostname, 256);
 	char *username = getenv("USER");
