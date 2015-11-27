@@ -26,11 +26,11 @@ char*** inputLine() {
 	 * 	Returns:
 	 * 		Input to be executed, divided up into commands and their options.
 	 */
-	char* sin;
+	char sin[256];
 	char* s = (char *)malloc(sizeof(char) * 256);;
 	char*** scol = (char ***)malloc(sizeof(char **) * 256);
 	prompt();
-	fgets(sin, sizeof(s), stdin);
+	fgets(sin, sizeof(sin), stdin);
 	strcpy(s, sin);
 	char* news;
 	char* sp = s;
@@ -39,12 +39,9 @@ char*** inputLine() {
 	while(sp) {
 		news = strsep(&sp, ";");
 		scol[c] = inputCommand(news);
-		//printf("%s\n", scol[0][1]);
 		c++;
 	}
 	scol[c] = 0;
-	printf("%s\n", scol[0][0]);
-	printf("%s\n", scol[0][1]);
 	return scol;
 }
 
