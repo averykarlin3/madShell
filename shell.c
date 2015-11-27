@@ -26,17 +26,11 @@ char*** inputLine() {
 	 * 	Returns:
 	 * 		Input to be executed, divided up into commands and their options.
 	 */
-<<<<<<< HEAD
-	char* s = (char *)malloc(sizeof(char) * 256);
-	char*** scol = (char ***)malloc(sizeof(char **) * 256);	
-        prompt();
-=======
 	char* s = (char *)malloc(256);
 	//char*** scol = (char ***)malloc(sizeof(char **) * 256);
 	char (**scol)[256] = malloc(sizeof(char[256][256][256]));
 	//http://stackoverflow.com/questions/30117161/why-do-i-need-to-use-type-to-point-to-type/30117625#30117625
 	prompt();
->>>>>>> 5ff6dfd2443c8548d76b020ec12fcb97a05b7dbd
 	fgets(s, sizeof(s), stdin);
 	char* news;
 	char* sp = s;
