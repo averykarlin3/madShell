@@ -46,6 +46,10 @@ char** inputCommand(char* input) {
 	char** sar = (char **)malloc(sizeof(char *) * 256);
 	char* news;
 	int c = 0;
+	//remove spaces from end of input
+	while (input[strlen(input) - 1] == ' ') {
+		input[strlen(input) - 1] = '\0';
+	}
 	while(input) {
 		news = strsep(&input, " ");
 		//make sure news isn't empty
