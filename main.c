@@ -2,21 +2,30 @@
 
 int main() {
 	int done = 0;
-	char*** command;
+	char* command;
+	char** curCommand;
 	while(!done) {
 		command = inputLine();
+		//printf("%s\n",command);
+		curCommand = inputCommand(command);
 		int i = 0;
-		while(command[i] && !done) {
-			if(!strcmp(command[i][0], "exit")) {
+		while(command && !done && curCommand) {
+			//printf("%s\n", command);
+			//printf("%s\n", command);
+			//strsep(&command, ";");
+			//printf("%s\n", command);
+			if(!strcmp(curCommand[0], "exit")) {
 				done++;
 			}
-			else if(!strcmp(command[i][0], "cd")) {
-				chdir(command[i][1]);
+			else if(!strcmp(curCommand[0], "cd")) {
+				chdir(curCommand[1]);
 			}
 			else {
-				int fail = execute(command[i]);
+				int fail = execute(curCommand);
 			}
 			i++;
+			//curCommand = inputCommand(command);
+			command = NULL;
 		}
 	}
 	return 0;

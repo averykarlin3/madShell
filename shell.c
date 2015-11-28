@@ -21,7 +21,7 @@ void prompt() {
 	fflush(stdout);
 }
 
-char*** inputLine() {
+char* inputLine() {
 	/** Responsible for user interaction.
 	 * 
 	 * 	Returns:
@@ -29,13 +29,14 @@ char*** inputLine() {
 	 */
 	char sin[256];
 	char* s = (char *)malloc(sizeof(char) * 256);;
-	char*** scol = (char ***)malloc(sizeof(char **) * 256);
+	//char** scol = (char **)malloc(sizeof(char *) * 256);
 	prompt();
 	fgets(sin, sizeof(sin), stdin);
 	strcpy(s, sin);
 	char* news;
 	char* sp = s;
 	sp = strsep(&sp, "\n");
+	/*
 	int c = 0;
 	while(sp) {
 		news = strsep(&sp, ";");
@@ -43,10 +44,14 @@ char*** inputLine() {
 		c++;
 	}
 	scol[c] = 0;
-	return scol;
+	*/
+	return sp;
 }
 
-char** inputCommand(char* input) {
+char** inputCommand(char* comm) {
+	char* input = strsep(&comm, ";");
+	//printf("%s\n", input);
+	//printf("%s\n", comm);
 	char** sar = (char **)malloc(sizeof(char *) * 256);
 	char* news;
 	int c = 0;
