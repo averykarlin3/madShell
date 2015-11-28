@@ -1,4 +1,4 @@
-madshell: main.o shell.o
+madshell: main.o shell.o parser.o
 	gcc main.o shell.o parser.o -o madshell
 main.o: main.c
 	gcc -c main.c
