@@ -74,17 +74,25 @@ int execute(char** command) {
 		
 		Function: Executes the entered command
 
-		Returns: WEXITSTATUS
+		Returns: WEXITSTATUSis 
 	*/
-	pid_t chP = fork();
-	int status = 0;
-	if(chP == 0) {
-		int c = execvp(command[0], command);
-		exit(errno);
+	if(!strcmp(command[0], "exit")) {
+		exit(0);
+	}
+	else if(!strcmp(command[0], "cd")) {
+		return chdir(command[1]);
 	}
 	else {
-		wait(&status);
+		pid_t chP = fork();
+		int status = 0;
+		if(chP == 0) {
+			int c = execvp(command[0], command);
+			exit(errno);
+		}
+		else {
+			wait(&status);
+		}
+		return WEXITSTATUS(status);
 	}
-	return WEXITSTATUS(status);
 }
 

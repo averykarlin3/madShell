@@ -11,15 +11,7 @@ int main() {
 		while(command && !done) {
 			sepCommand = strsep(&command, ";");
 			curCommand = inputCommand(sepCommand);
-			if(!strcmp(curCommand[0], "exit")) {
-				done++;
-			}
-			else if(!strcmp(curCommand[0], "cd")) {
-				chdir(curCommand[1]);
-			}
-			else {
-				int fail = execute(curCommand);
-			}
+			int fail = execute(curCommand);
 			i++;
 		}
 	}
