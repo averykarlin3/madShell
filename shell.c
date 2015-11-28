@@ -53,7 +53,7 @@ char** inputCommand(char* input) {
 	while(input) {
 		news = strsep(&input, " ");
 		//make sure news isn't empty
-		while (!strcmp(news, "\0")) {
+		while (!strcmp(news, "\0") && input) {
 			news = strsep(&input, " ");
 		}
 		//get rid of any extra spaces at the beginning of input
@@ -76,7 +76,10 @@ int execute(char** command) {
 
 		Returns: WEXITSTATUSis 
 	*/
-	if(!strcmp(command[0], "exit")) {
+	if (!strcmp(command[0],"")) {
+		return 1;
+	}
+	else if(!strcmp(command[0], "exit")) {
 		exit(0);
 	}
 	else if(!strcmp(command[0], "cd")) {
