@@ -11,10 +11,11 @@
 
 #endif
 
-#ifndef SHELL_H
-#define SHELL_H 1
+#ifndef PARSER_H
+#define PARSER_H 1
 
-int execute(char** command);
-void prompt();
+char* inputLine();
+char** inputCommand(char* input);
 
 #endif
+

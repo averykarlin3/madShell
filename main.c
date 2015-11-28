@@ -1,4 +1,5 @@
 #include "shell.h"
+#include "parser.h"
 
 int main() {
 	int done = 0;
