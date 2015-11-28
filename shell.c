@@ -57,6 +57,16 @@ char** inputCommand(char* comm) {
 	int c = 0;
 	while(input) {
 		news = strsep(&input, " ");
+		//printf("%s",news);
+		//printf("h\n");
+		while (!strcmp(news, "\0")) {
+			news = strsep(&input, " ");
+		}
+		if (input) {
+			while (input[0] == ' ') {
+				strsep(&input, " ");
+			}
+		}
 		sar[c] = news;
 		c++;
 	}
