@@ -36,29 +36,15 @@ char* inputLine() {
 	char* news;
 	char* sp = s;
 	sp = strsep(&sp, "\n");
-	/*
-	int c = 0;
-	while(sp) {
-		news = strsep(&sp, ";");
-		scol[c] = inputCommand(news);
-		c++;
-	}
-	scol[c] = 0;
-	*/
 	return sp;
 }
 
-char** inputCommand(char* comm) {
-	char* input = strsep(&comm, ";");
-	//printf("%s\n", input);
-	//printf("%s\n", comm);
+char** inputCommand(char* input) {
 	char** sar = (char **)malloc(sizeof(char *) * 256);
 	char* news;
 	int c = 0;
 	while(input) {
 		news = strsep(&input, " ");
-		//printf("%s",news);
-		//printf("h\n");
 		while (!strcmp(news, "\0")) {
 			news = strsep(&input, " ");
 		}

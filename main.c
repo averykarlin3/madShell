@@ -6,14 +6,9 @@ int main() {
 	char** curCommand;
 	while(!done) {
 		command = inputLine();
-		//printf("%s\n",command);
-		curCommand = inputCommand(command);
 		int i = 0;
-		while(command && !done && curCommand) {
-			//printf("%s\n", command);
-			//printf("%s\n", command);
-			//strsep(&command, ";");
-			//printf("%s\n", command);
+		while(command && !done) {
+			curCommand = inputCommand(strsep(&command, ";"));
 			if(!strcmp(curCommand[0], "exit")) {
 				done++;
 			}
@@ -24,8 +19,6 @@ int main() {
 				int fail = execute(curCommand);
 			}
 			i++;
-			//curCommand = inputCommand(command);
-			command = NULL;
 		}
 	}
 	return 0;
