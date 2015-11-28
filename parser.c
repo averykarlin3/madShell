@@ -23,23 +23,25 @@ char** inputCommand(char* input) {
 	   Returns: An array of strings with each element in the array containing a different section of the command 
 	   (e.g. ["ls", "-l"])
 	*/
+	char* inputc = (char *)malloc(sizeof(char) * 256); //copy of input so we don't have to modify input
+	strcpy(inputc, input);
 	char** sar = (char **)malloc(sizeof(char *) * 256);
 	char* news;
 	int c = 0;
 	//remove spaces from end of input
-	while (input[strlen(input) - 1] == ' ') {
-		input[strlen(input) - 1] = '\0';
+	while (inputc[strlen(inputc) - 1] == ' ') {
+		inputc[strlen(inputc) - 1] = '\0';
 	}
-	while(input) {
-		news = strsep(&input, " ");
+	while(inputc) {
+		news = strsep(&inputc, " ");
 		//make sure news isn't empty
-		while (!strcmp(news, "\0") && input) {
-			news = strsep(&input, " ");
+		while (!strcmp(news, "\0") && inputc) {
+			news = strsep(&inputc, " ");
 		}
 		//get rid of any extra spaces at the beginning of input
-		if (input) {
-			while (input[0] == ' ') {
-				strsep(&input, " ");
+		if (inputc) {
+			while (inputc[0] == ' ') {
+				strsep(&inputc, " ");
 			}
 		}
 		sar[c] = news;
