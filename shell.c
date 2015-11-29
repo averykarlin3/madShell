@@ -64,7 +64,10 @@ int redirectIn(char* fileName) {
 }
 
 int redirectOut(char* fileName) {
-	
+	/* Input: fileName -  The file path of the desired output file 
+	Creates the file table entry for fileName, then sets stdout to it after copying the entry for stdout
+	Output: stdoutCop - The file descriptor of the copied stdout
+	*/
 	int desc = open(fileName, O_WRONLY | O_TRUNC | O_CREAT, 0744);
 	int stdoutCop = dup(1);
 	dup2(desc, 1);
