@@ -49,7 +49,6 @@ int main() {
 				stdoutCop = redirectOut(removeWhiteSpace(stdoutFil));
 			}
 			curCommand = inputCommand(sepCommand);
-			//printf("%s\n", sepCommand);
 			int fail = execute(curCommand);
 			if (stdinFil) {
 				dup2(stdinCop, 0);
