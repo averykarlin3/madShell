@@ -10,6 +10,7 @@ int main() {
 	char* stdoutFil = NULL; //file redirected out
 	char* tempString;
 	int stdinCop;
+	int stdoutCop;
 	while (1) {
 		command = inputLine();
 		while(command) {
@@ -44,6 +45,9 @@ int main() {
 			if (stdinFil) {
 				stdinCop = redirectIn(removeWhiteSpace(stdinFil));
 			}
+			if (stdoutFil) {
+				stdoutCop = redirectOut(removeWhiteSpace(stdoutFil));
+			}
 			curCommand = inputCommand(sepCommand);
 			//printf("%s\n", sepCommand);
 			int fail = execute(curCommand);
@@ -51,7 +55,7 @@ int main() {
 				dup2(stdinCop, 0);
 			}
 			if (stdoutFil) {
-				redirectOut(removeWhiteSpace(stdoutFil));
+				dup2(stdoutCop, 1);
 			}
 		}
 	}

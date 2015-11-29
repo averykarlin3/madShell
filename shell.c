@@ -52,6 +52,10 @@ int execute(char** command) {
 }
 
 int redirectIn(char* fileName) {
+	/* Input: fileName -  The file path of the desired input file 
+	Creates the file table entry for fileName, then sets stdin to it after copying the entry for stdin
+	Output: stdinCop - The file descriptor of the copied stdin
+	*/
 	int desc = open(fileName, O_RDONLY, 0744);
 	int stdinCop = dup(0);
 	dup2(desc, 0);
@@ -60,10 +64,12 @@ int redirectIn(char* fileName) {
 }
 
 int redirectOut(char* fileName) {
+	
 	int desc = open(fileName, O_WRONLY | O_TRUNC | O_CREAT, 0744);
-	dup2(1, desc);
+	int stdoutCop = dup(1);
+	dup2(desc, 1);
 	close(desc);
-	return desc;
+	return stdoutCop;
 }
 
 
