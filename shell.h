@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
+#include <fcntl.h>
 
 #endif
 
@@ -16,5 +17,7 @@
 
 int execute(char** command);
 void prompt();
+int redirectIn(char* fileName);
+int redirectOut(char* fileName);
 
 #endif

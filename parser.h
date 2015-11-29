@@ -8,6 +8,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <errno.h>
+#include <fcntl.h>
 
 #endif
 
@@ -16,6 +17,8 @@
 
 char* inputLine();
 char** inputCommand(char* input);
+char* removeWhiteSpace(char* s);
+int findIndex(char* string, char* substring);
 
 #endif
 

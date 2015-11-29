@@ -51,3 +51,19 @@ int execute(char** command) {
 	}
 }
 
+int redirectIn(char* fileName) {
+	int desc = open(fileName, O_RDONLY, 0744);
+	int stdinCop = dup(0);
+	dup2(desc, 0);
+	close(desc);
+	return stdinCop;
+}
+
+int redirectOut(char* fileName) {
+	int desc = open(fileName, O_WRONLY | O_TRUNC | O_CREAT, 0744);
+	dup2(1, desc);
+	close(desc);
+	return desc;
+}
+
+

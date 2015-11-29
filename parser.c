@@ -50,3 +50,38 @@ char** inputCommand(char* input) {
 	sar[c] = 0;
 	return sar;
 }
+
+char* removeWhiteSpace(char* s) {
+	/* Input: char* s
+
+	   Returns: s with the white space at the beginning and end removed
+	*/
+	while (s[0] == ' ') {
+		strsep(&s, " ");
+		if (!s) {
+			return s;
+		}
+	}
+	while (s[0] == ' ') {
+		s[strlen(s) - 1] = '\0';
+		if (!s) {
+			return s;
+		}
+	}
+	return s;
+}
+
+int findIndex(char* string, char* substring) {
+	/* Input: char* s
+
+	   Returns: Whichever of > and < appears first in the string. Returns 257 if none.
+	*/
+	int maxIndex = 257;
+	char* temp = strstr(string, substring);
+	if (temp) {
+		if (string - temp < maxIndex) {
+			maxIndex = string - temp;
+		}
+	}
+	return maxIndex;
+}
