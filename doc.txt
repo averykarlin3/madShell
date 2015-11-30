@@ -12,6 +12,7 @@ Attempted:
 
 Bugs: 1. The command tr a-z A-Z < foo.txt > goo.txt does not work. It parses all the text correctly and each of > and < work individually, but for some reason (which we did not figure out) when it all comes together it doesn’t work.
       2. You can’t use two of < or > in a single command unless they are separated by a ;. We didn’t account for this and aren’t even sure how things would be redirected if you have > foo.txt > goo.txt.
+      3. There is an issue with the piping ending after running
 	
 
 Function Headers by File:
