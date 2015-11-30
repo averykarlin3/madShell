@@ -1,0 +1,79 @@
+
+Madshell
+by Avery Karlin, Matthew Lerner-Brecher, and Dalton Wu, Period 9
+
+Features:
+	Forks and executes commands written after the shell prompt
+	Able to use <, >, and | in commands
+	Parses multiple commands seperated by |
+
+Attempted:
+	Began work on returning error messages, but was not implemented
+
+Bugs:
+	
+
+Function Headers by File:
+
+	Shell.c: Creates shell appearence and basic functionality
+
+		void prompt();
+			/* Prints a prompt for the shell.
+			 */
+
+		int execute(char** command);
+			/*	Input:  An array of strings with each element in the array containing a different section of the command
+				
+				Function: Executes the entered command
+
+				Returns: WEXITSTATUSis 
+			*/
+
+		int redirectIn(char* fileName);
+			/* Input: fileName -  The file path of the desired input file 
+			Creates the file table entry for fileName, then sets stdin to it after copying the entry for stdin
+			Output: stdinCop - The file descriptor of the copied stdin
+			*/
+
+		int redirectOut(char* fileName);
+			/* Input: fileName -  The file path of the desired output file 
+			Creates the file table entry for fileName, then sets stdout to it after copying the entry for stdout
+			Output: stdoutCop - The file descriptor of the copied stdout
+			*/
+
+		void pipingHot(char **command1, char **command2);
+			/**	Pipes two commands.
+			 * 	
+			 *	Parameters:
+			 *		command1: the one on the left.
+			 *		command2: the one on the right. No, the other right.
+			 */
+
+	Parser.c: Parses through shell commands
+
+		char* inputLine();
+			/** Function: Gives the shell prompt and reads in the text the user enters.
+			 * 
+			 * 	Returns:
+			 * 		The text entered into stdin with the newline char removed
+			 */
+
+		char** inputCommand(char* input);
+			/* Input: Takes in the line containing one full command (e.g. "ls -l")
+
+			   Returns: An array of strings with each element in the array containing a different section of the command 
+			   (e.g. ["ls", "-l"])
+			*/
+
+		char* removeWhiteSpace(char* s);
+			/* Input: char* s
+
+			   Returns: s with the white space at the beginning and end removed
+			*/
+
+		int findIndex(char* string, char* substring);
+			/* Input: char* s
+
+			   Returns: Whichever of > and < appears first in the string. Returns 257 if none.
+			*/
+
