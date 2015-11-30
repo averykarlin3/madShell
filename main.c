@@ -41,7 +41,6 @@ int main() {
 					}
 				}
 			}
-			
 			if (stdinFil) {
 				stdinCop = redirectIn(removeWhiteSpace(stdinFil));
 			}
