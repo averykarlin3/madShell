@@ -96,7 +96,7 @@ void pipingHot(char **command1, char **command2) {
 		dup2(fd[0], 0);
 		close(fd[1]); // close read side of pipe
 		execute(command2);
-		exit(0);
+		//exit(0);
 	}
 	dup2(stdinA, 0);
 	dup2(stdoutA, 1);
