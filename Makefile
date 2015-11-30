@@ -9,4 +9,4 @@ shell.o: shell.c
 run: madshell
 	./madshell
 clean:
-	rm main.o shell.o madshell
+	rm main.o parser.o shell.o madshell
