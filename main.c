@@ -15,45 +15,54 @@ int main() {
 		command = inputLine();
 		while(command) {
 			sepCommand = strsep(&command, ";");
-			if (findIndex(sepCommand, "<") != 257 || findIndex(sepCommand, ">") != 257) {
-				if (findIndex(sepCommand, "<") == 257) {
-					tempString = strsep(&sepCommand, ">");
-					stdoutFil = sepCommand;
-					sepCommand = tempString;
-				}
-				else if (findIndex(sepCommand, ">") == 257) {
-					tempString = strsep(&sepCommand, "<");
-					stdinFil = sepCommand;
-					sepCommand = tempString;
-				}
-				else {
-					if (findIndex(sepCommand, ">") < findIndex(sepCommand, "<")) {
+			int left = findIndex(sepCommand, "<");
+			int right = findIndex(sepCommand, ">");
+			int pipe = findIndex(sepCommand, "|");
+			if(0) {
+				printf("OKAY\n");
+			}
+			else {
+				if (left != 257 || right != 257) {
+					if (left == 257) {
 						tempString = strsep(&sepCommand, ">");
-						stdoutFil = strsep(&sepCommand, "<");
-						stdinFil = sepCommand;
-						sepCommand = tempString;
-					} 
-					else {
-						tempString = strsep(&sepCommand, ">");
-						stdinFil = strsep(&sepCommand, "<");
 						stdoutFil = sepCommand;
 						sepCommand = tempString;
 					}
+					else if (right == 257) {
+						tempString = strsep(&sepCommand, "<");
+						stdinFil = sepCommand;
+						sepCommand = tempString;
+					}
+					else {
+						if (right < left) {
+							tempString = strsep(&sepCommand, ">");
+							stdoutFil = strsep(&sepCommand, "<");
+							stdinFil = sepCommand;
+							sepCommand = tempString;
+						} 
+						else {
+							tempString = strsep(&sepCommand, ">");
+							stdinFil = strsep(&sepCommand, "<");
+							stdoutFil = sepCommand;
+							sepCommand = tempString;
+						}
+					}
 				}
-			}
-			if (stdinFil) {
-				stdinCop = redirectIn(removeWhiteSpace(stdinFil));
-			}
-			if (stdoutFil) {
-				stdoutCop = redirectOut(removeWhiteSpace(stdoutFil));
-			}
-			curCommand = inputCommand(sepCommand);
-			int fail = execute(curCommand);
-			if (stdinFil) {
-				dup2(stdinCop, 0);
-			}
-			if (stdoutFil) {
-				dup2(stdoutCop, 1);
+				
+				if (stdinFil) {
+					stdinCop = redirectIn(removeWhiteSpace(stdinFil));
+				}
+				if (stdoutFil) {
+					stdoutCop = redirectOut(removeWhiteSpace(stdoutFil));
+				}
+				curCommand = inputCommand(sepCommand);
+				int fail = execute(curCommand);
+				if (stdinFil) {
+					dup2(stdinCop, 0);
+				}
+				if (stdoutFil) {
+					dup2(stdoutCop, 1);
+				}
 			}
 		}
 	}
