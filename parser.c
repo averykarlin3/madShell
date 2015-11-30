@@ -8,7 +8,7 @@ char* inputLine() {
 	 * 		The text entered into stdin with the newline char removed
 	 */
 	char sin[256];
-	char* s = (char *)malloc(sizeof(char) * 256);;
+	char* s = (char *)malloc(sizeof(char) * 256);
 	prompt();
 	fgets(sin, sizeof(sin), stdin);
 	strcpy(s, sin);
