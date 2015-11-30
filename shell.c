@@ -83,6 +83,8 @@ void pipingHot(char **command1, char **command2) {
 	 *		command2: the one on the right. No, the other right.
 	 */
 	int fd[2];
+	int stdinA = dup(0);
+	int stdoutA = dup(1);
 	pid_t childpid;
 	pipe(fd);
 	if(!fork()) {
@@ -95,4 +97,6 @@ void pipingHot(char **command1, char **command2) {
 		close(fd[1]); // close read side of pipe
 		execute(command2);
 	}
+	dup2(stdinA, 0);
+	dup2(stdoutA, 1);
 }
