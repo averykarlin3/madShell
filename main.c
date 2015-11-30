@@ -8,6 +8,7 @@ int main() {
 	char* mainCommand[256]; // command to be run
 	char* stdinFil = NULL;  //file redirected in
 	char* stdoutFil = NULL; //file redirected out
+	char* pipe2 = NULL;
 	char* tempString;
 	int stdinCop;
 	int stdoutCop;
@@ -41,6 +42,12 @@ int main() {
 					}
 				}
 			}
+			else if(findIndex(sepCommand, "|") != 257) { 
+				tempString = strsep(&sepCommand, "|");
+				pipe2 = sepCommand;
+				sepCommand = tempString;
+
+			}
 			
 			if (stdinFil) {
 				stdinCop = redirectIn(removeWhiteSpace(stdinFil));
@@ -48,8 +55,13 @@ int main() {
 			if (stdoutFil) {
 				stdoutCop = redirectOut(removeWhiteSpace(stdoutFil));
 			}
-			curCommand = inputCommand(sepCommand);
-			int fail = execute(curCommand);
+			if(pipe2) {
+				pipingHot(inputCommand(removeWhiteSpace(sepCommand)), inputCommand(removeWhiteSpace(pipe2)));
+			}
+			else {
+				curCommand = inputCommand(sepCommand);
+				int fail = execute(curCommand);
+			}
 			if (stdinFil) {
 				dup2(stdinCop, 0);
 			}
