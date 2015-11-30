@@ -46,7 +46,6 @@ int main() {
 				tempString = strsep(&sepCommand, "|");
 				pipe2 = sepCommand;
 				sepCommand = tempString;
-
 			}
 			
 			if (stdinFil) {
