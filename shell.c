@@ -95,4 +95,5 @@ void pipingHot(char **command1, char **command2) {
 		close(fd[1]); // close read side of pipe
 		execute(command2);
 	}
+	printf("I'm done\n");
 }
