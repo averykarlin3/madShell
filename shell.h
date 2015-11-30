@@ -19,5 +19,6 @@ int execute(char** command);
 void prompt();
 int redirectIn(char* fileName);
 int redirectOut(char* fileName);
-
+void pipingHot(char **command1, char **command2);
+void catfish();
 #endif

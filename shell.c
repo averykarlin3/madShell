@@ -75,27 +75,28 @@ int redirectOut(char* fileName) {
 	return stdoutCop;
 }
 
-int pipingHot(char **argv) {
+void pipingHot(char **command1, char **command2) {
+	/**	Pipes two commands.
+	 * 	
+	 *	Parameters:
+	 *		command1: the one on the left.
+	 *		command2: the one on the right. No, the other right.
+	 */
 	int fd[2];
 	pid_t childpid;
 	pipe(fd);
-	childpid = fork();
-	if(childpid == -1) {
-		perror("Error forking...");
-		exit(1);
+	if(!fork()) {
+		dup2(fd[1], 1);
+		close(fd[0]);
+		execute(command1);
 	}
-	else if(childpid) {	 /*parent proces*/	 //grep .c
-		wait(&childpid);		//waits till the child send output to pipe
-		close(fd[1]);
-		close(0);		 //stdin closed
-		dup2(fd[0],0);
-		execlp(argv[2],argv[2],argv[3],NULL);
+	else {
+		dup2(fd[0], 0);
+		close(fd[1]); // close read side of pipe
+		execute(command2);
 	}
-	else if (childpid == 0) {	//ls
-		close(fd[0]);	 /*Closes read side of pipe*/
-		close(1);		 //STDOUT closed
-		dup2(fd[1],1);
-		execl(argv[1],NULL);
-	}
-	return 0;
+}
+
+void catfish() {
+	printf("CATFISH!\n");
 }
