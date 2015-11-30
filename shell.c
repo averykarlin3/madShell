@@ -96,7 +96,3 @@ void pipingHot(char **command1, char **command2) {
 		execute(command2);
 	}
 }
-
-void catfish() {
-	printf("CATFISH!\n");
-}
